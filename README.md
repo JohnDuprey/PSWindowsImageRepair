@@ -15,6 +15,7 @@ This is a set of scripts that can help with windows image repair. When running i
     * This will run the SFC /Scannow command and output an object for you indicating the status
 3. Run `Get-CBSResult` on the machine
     * This will output any files that were corrupted and fixed or still corrupted. This parses the CBS log for you.
+    * If there are any corrupted files then continue on two steps 4 and 5.
 4. Run `Repair-WindowsImage -Online -ScanHealth`
    * The ScanHealth parameter scans the image for component store corruption. This operation will take several minutes.
 5. Run `Repair-WindowsImage -Online -RestoreHealth`

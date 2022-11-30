@@ -12,10 +12,11 @@ This is a set of scripts that can help with windows image repair. When running i
 1. You will need to make sure that the `Trusted Installer service`, or called `Windows Modules Installer`, is in at least manual mode and started
     * If you do not then the next step will warn you that a service is not running
 2. Run `Get-SFCResult` on the machine
-    * This will run the SFC /Scannow command and output an object for you indicating the status
+    * This will run the SFC /Scannow command and output an object for you indicating the status.
+    * If the status says that there are corrupted files and it was unable to fix them then continue on to the next step.
 3. Run `Get-CBSResult` on the machine
-    * This will output any files that were corrupted and fixed or still corrupted. This parses the CBS log for you.
-    * If there are any corrupted files then continue onto steps 4 and 5.
+    * This will output the specific files that were corrupted and fixed or still corrupted. This parses the CBS log for you.
+    * Continue on to the next steps if there are corrupted files.
 4. Run `Repair-WindowsImage -Online -ScanHealth`
    * The ScanHealth parameter scans the image for component store corruption. This operation will take several minutes.
 5. Run `Repair-WindowsImage -Online -RestoreHealth`
